@@ -26,7 +26,7 @@ Este proyecto es una herramienta sencilla y efectiva para monitorear el uso de r
 1. **Clonar el repositorio**:
    ```bash
    git clone https://github.com/franjimenxz/System-monitor.git
-   cd tu-repo
+   cd System-monitor
    ```
 
 2. **Hacer ejecutable el script de monitoreo**:
@@ -100,7 +100,7 @@ This project is a simple and effective tool for monitoring system resource usage
 1. **Clone the Repository**:
    ```bash
    git clone https://github.com/franjimenxz/System-monitor.git
-   cd your-repo
+   cd System-monitor
    ```
 
 2. **Make the Monitoring Script Executable**:

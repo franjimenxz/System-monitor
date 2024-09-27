@@ -1,75 +1,146 @@
 
-# Sistema de Monitoreo de Recursos del Sistema
+# Sistema de Monitoreo de Recursos del Sistema (Bash y Python) 
 
-Este proyecto es una herramienta sencilla diseñada para ayudar a los administradores de sistemas a monitorear el uso de los recursos del sistema (CPU, RAM, Disco). Incluye un script en Bash para recopilar y registrar estas métricas, y un script en Python para generar gráficos a partir de los datos recogidos.
+## Visión General
 
-## Archivos
+Este proyecto es una herramienta sencilla y efectiva para monitorear el uso de recursos del sistema (CPU, RAM, Disco) en servidores o estaciones de trabajo. Incluye un script en Bash para recopilar datos y otro en Python para generar informes visuales.
 
-- **`monitor.sh`**: Este es el script principal en Bash. Su función es capturar el uso actual de CPU, RAM y Disco en el sistema y registrar estos datos en un archivo de log. Este archivo de log es donde podrás revisar el estado de los recursos del sistema en diferentes momentos del tiempo.
+## Características
 
-- **`generate_report.py`**: Este script en Python toma los datos que ha recopilado el script de monitoreo y genera un gráfico que muestra cómo han variado los recursos del sistema a lo largo del tiempo. Es perfecto para una visión más visual y fácil de entender.
+- **Monitorización periódica**: Registra el uso de CPU, RAM y Disco en intervalos definidos.
+- **Generación de informes**: Crea gráficos que muestran las tendencias de uso a lo largo del tiempo.
+- **Configuración flexible**: Fácil de configurar para monitorear en intervalos específicos.
+- **Uso de Cron**: Automatiza la ejecución del script de monitoreo usando cron.
 
-- **`crontab_example.txt`**: Aquí te damos un ejemplo de cómo puedes configurar una tarea programada (`cron`) para que el script de monitoreo se ejecute automáticamente cada 5 minutos, sin que tengas que preocuparte por ejecutarlo manualmente.
+## Requisitos
 
-## ¿Cómo Usar Este Proyecto?
+- **Sistema operativo**: Linux o macOS
+- **Dependencias de Python**: `matplotlib`, `pandas`
+  
+  ```bash
+  pip install matplotlib pandas
+  ```
 
-### Paso 1: Ejecutar el Script de Monitoreo
+## Instalación
 
-Primero, asegúrate de que el script `monitor.sh` tenga permisos de ejecución:
+1. **Clonar el repositorio**:
+   ```bash
+   git clone https://github.com/franjimenxz/System-monitor.git
+   cd tu-repo
+   ```
 
-\`\`\`bash
-chmod +x monitor.sh
-\`\`\`
+2. **Hacer ejecutable el script de monitoreo**:
+   ```bash
+   chmod +x monitor.sh
+   ```
 
-Luego, puedes ejecutarlo manualmente para comenzar a recopilar datos:
+## Uso
 
-\`\`\`bash
-./monitor.sh
-\`\`\`
+1. **Ejecutar el Script de Monitoreo**:
+   ```bash
+   ./monitor.sh
+   ```
 
-Cada vez que ejecutes este script, se agregará una nueva línea en el archivo de log (`/var/log/sys_monitor.log`) con la fecha, la hora, y los porcentajes de uso de CPU, RAM y Disco.
+   El script registrará el uso de CPU, RAM y Disco en el archivo `/var/log/sys_monitor.log`.
 
-#### Ejemplo de Salida en el Log:
+2. **Generar un Informe Gráfico**:
+   ```bash
+   python3 generate_report.py
+   ```
 
-Después de ejecutar `monitor.sh` varias veces, el archivo de log podría verse así:
+   Este comando generará un gráfico llamado `system_usage_report.png` que mostrará las tendencias de uso de los recursos.
 
-\`\`\`plaintext
+3. **Automatización con Cron**:
+   Para ejecutar el script de monitoreo automáticamente cada 5 minutos, añade la siguiente línea a tu crontab:
+   
+   ```bash
+   */5 * * * * /ruta/al/script/monitor.sh
+   ```
+
+## Ejemplo de Salida del Log
+
+```
 2024-09-27 14:00:01, CPU: 12.5%, RAM: 45.32%, Disk: 30%
 2024-09-27 14:05:01, CPU: 18.7%, RAM: 47.21%, Disk: 30%
 2024-09-27 14:10:01, CPU: 20.1%, RAM: 48.33%, Disk: 30%
 2024-09-27 14:15:01, CPU: 15.9%, RAM: 46.87%, Disk: 31%
 2024-09-27 14:20:01, CPU: 25.3%, RAM: 49.05%, Disk: 31%
-\`\`\`
+```
 
+## Ejemplo de Salida del Informe
 
-### Paso 2: Generar un Informe Gráfico
+Una vez que ejecutes `generate_report.py`, se generará un archivo de imagen que visualizará las métricas de uso de recursos del sistema a lo largo del tiempo. 
 
-Una vez que hayas recopilado suficientes datos, puedes generar un gráfico para visualizar cómo han variado los recursos del sistema:
+---
 
-\`\`\`bash
-python3 generate_report.py
-\`\`\`
+# System Resource Monitor (Bash and Python) (EN)
 
-Este comando creará un archivo llamado `system_usage_report.png`, que mostrará un gráfico con las siguientes líneas:
+## Overview
 
-- **CPU Usage (%)**: El porcentaje de uso de CPU a lo largo del tiempo.
-- **RAM Usage (%)**: El porcentaje de uso de RAM a lo largo del tiempo.
-- **Disk Usage (%)**: El porcentaje de uso de Disco a lo largo del tiempo.
+This project is a simple and effective tool for monitoring system resource usage (CPU, RAM, Disk) on servers or workstations. It includes a Bash script for data collection and a Python script for generating visual reports.
 
-### Dependencias
+## Features
 
-Para que todo funcione, necesitarás tener instalados los siguientes paquetes de Python:
+- **Periodic Monitoring**: Logs CPU, RAM, and Disk usage at defined intervals.
+- **Report Generation**: Creates graphs showing usage trends over time.
+- **Flexible Configuration**: Easy to configure for specific monitoring intervals.
+- **Cron Usage**: Automates script execution using cron.
 
-- **`matplotlib`**: Para generar gráficos. Puedes instalarlo con `pip`:
-  \`\`\`bash
-  pip install matplotlib
-  \`\`\`
+## Requirements
 
-- **`pandas`**: Para manejar los datos en formato tabular. Puedes instalarlo con `pip`:
-  \`\`\`bash
-  pip install pandas
-  \`\`\`
+- **Operating System**: Linux or macOS
+- **Python Dependencies**: `matplotlib`, `pandas`
 
-## Resumen
+  ```bash
+  pip install matplotlib pandas
+  ```
 
-Este proyecto es una solución simple y efectiva para monitorear los recursos del sistema. Es ideal si necesitas una forma rápida y fácil de saber cómo está funcionando tu servidor o computadora a lo largo del tiempo. ¡Esperamos que te sea útil!
+## Installation
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/franjimenxz/System-monitor.git
+   cd your-repo
+   ```
+
+2. **Make the Monitoring Script Executable**:
+   ```bash
+   chmod +x monitor.sh
+   ```
+
+## Usage
+
+1. **Run the Monitoring Script**:
+   ```bash
+   ./monitor.sh
+   ```
+
+   The script will log CPU, RAM, and Disk usage to the file `/var/log/sys_monitor.log`.
+
+2. **Generate a Report**:
+   ```bash
+   python3 generate_report.py
+   ```
+
+   This command will generate a graph called `system_usage_report.png` showing the resource usage trends.
+
+3. **Automation with Cron**:
+   To automatically run the monitoring script every 5 minutes, add the following line to your crontab:
+   
+   ```bash
+   */5 * * * * /path/to/script/monitor.sh
+   ```
+
+## Example Log Output
+
+```
+2024-09-27 14:00:01, CPU: 12.5%, RAM: 45.32%, Disk: 30%
+2024-09-27 14:05:01, CPU: 18.7%, RAM: 47.21%, Disk: 30%
+2024-09-27 14:10:01, CPU: 20.1%, RAM: 48.33%, Disk: 30%
+2024-09-27 14:15:01, CPU: 15.9%, RAM: 46.87%, Disk: 31%
+2024-09-27 14:20:01, CPU: 25.3%, RAM: 49.05%, Disk: 31%
+```
+
+## Example Report Output
+
+After running `generate_report.py`, a PNG image file will be created that visualizes system resource usage metrics over time.

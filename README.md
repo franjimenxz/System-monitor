@@ -1,26 +1,27 @@
 
 # Sistema de Monitoreo de Recursos del Sistema
 
-Este proyecto es una herramienta sencilla para ayudar a monitorear el uso de los recursos del sistema (CPU, RAM, Disco). Incluye un script en Bash para recopilar y registrar estas métricas, y un script en Python para generar gráficos a partir de los datos obtenidos.
+Este proyecto es una herramienta sencilla diseñada para ayudar a los administradores de sistemas a monitorear el uso de los recursos del sistema (CPU, RAM, Disco). Incluye un script en Bash para recopilar y registrar estas métricas, y un script en Python para generar gráficos a partir de los datos recogidos.
 
 ## Archivos
 
-- **`monitor.sh`**: Este es el script principal en Bash. Su función es obtener el uso actual de CPU, RAM y Disco en el sistema y registrar estos datos en un archivo de log. Este archivo de log es donde se podra revisar el estado de los recursos del sistema en diferentes momentos del tiempo.
+- **`monitor.sh`**: Este es el script principal en Bash. Su función es capturar el uso actual de CPU, RAM y Disco en el sistema y registrar estos datos en un archivo de log. Este archivo de log es donde podrás revisar el estado de los recursos del sistema en diferentes momentos del tiempo.
 
-- **`generate_report.py`**: Este script en Python toma los datos que ha recopilado el script de monitoreo y genera un gráfico que muestra cómo han variado los recursos del sistema a lo largo del tiempo.
+- **`generate_report.py`**: Este script en Python toma los datos que ha recopilado el script de monitoreo y genera un gráfico que muestra cómo han variado los recursos del sistema a lo largo del tiempo. Es perfecto para una visión más visual y fácil de entender.
 
+- **`crontab_example.txt`**: Aquí te damos un ejemplo de cómo puedes configurar una tarea programada (`cron`) para que el script de monitoreo se ejecute automáticamente cada 5 minutos, sin que tengas que preocuparte por ejecutarlo manualmente.
 
 ## ¿Cómo Usar Este Proyecto?
 
 ### Paso 1: Ejecutar el Script de Monitoreo
 
-Primero, asegurarse de que el script `monitor.sh` tenga permisos de ejecución:
+Primero, asegúrate de que el script `monitor.sh` tenga permisos de ejecución:
 
 \`\`\`bash
 chmod +x monitor.sh
 \`\`\`
 
-Luego, se puede ejecutar manualmente para comenzar a recopilar datos:
+Luego, puedes ejecutarlo manualmente para comenzar a recopilar datos:
 
 \`\`\`bash
 ./monitor.sh
@@ -71,4 +72,4 @@ Para que todo funcione, necesitarás tener instalados los siguientes paquetes de
 
 ## Resumen
 
-Este proyecto es una solución simple y efectiva para monitorear los recursos del sistema. Es ideal si necesitas una forma rápida y fácil de saber cómo está funcionando tu servidor o computadora a lo largo del tiempo.
+Este proyecto es una solución simple y efectiva para monitorear los recursos del sistema. Es ideal si necesitas una forma rápida y fácil de saber cómo está funcionando tu servidor o computadora a lo largo del tiempo. ¡Esperamos que te sea útil!
